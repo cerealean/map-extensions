@@ -1,0 +1,17 @@
+{
+  "name": "map-extensions",
+  "version": "1.0.0",
+  "description": "Extensions to help when working with Map",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "map",
+    "typescript",
+    "javascript",
+    "ecmascript"
+  ],
+  "author": "Michael Crawford",
+  "license": "ISC"
+}

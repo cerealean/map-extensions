@@ -7,9 +7,10 @@
     "testOnce": "mocha",
     "clean": "rimraf ./build",
     "build": "npm run clean && npx tsc",
-    "examples:1": "tsc examples/two-battle-entities/index.ts",
     "pack": "npm run build && npm pack"
   },
+  "main": "build/index.js",
+  "types": "build/index",
   "keywords": [
     "map",
     "typescript",

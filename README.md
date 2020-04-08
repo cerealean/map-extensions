@@ -15,12 +15,13 @@ This package provides a MapWrapper object which, exactly as it sounds, wraps cur
 - find
 - filter
 - map
+- some
 
-The added methods perform exactly as their Array counterparters but instead work on the wrapped Map object.
+The added methods perform similarly to their Array counterparters but instead work on the wrapped Map object.
 
 #### Examples
 
-###### Find
+##### Find
 
 ```typescript
 const map = new Map([
@@ -42,7 +43,7 @@ const newMap = actual.toMap(); // Would be a new Map instance with the tuple inc
 const newWrappedMap = actual.toMapWrapper(); // Would be a new MapWrapper instance with the tuple included within it
 ```
 
-###### Filter
+##### Filter
 
 ```typescript
 const map = new Map<string, number>([
@@ -71,7 +72,7 @@ Map {
 */
 ```
 
-###### Map
+##### Map
 
 ```typescript
 const map = new Map<string, number>([
@@ -91,4 +92,24 @@ const actual = wrapper.map((value) => Math.pow(value, value));
 
 // actual will be an array of the original numbers to their own power
 // output would be [ 1, 4, 27, 256, 3125, 46656, 823543, 16777216, 387420489 ]
+```
+##### Some
+
+```typescript
+const map = new Map<string, number>([
+  ["uno", 1],
+  ["dos", 2],
+  ["tres", 3],
+  ["quatro", 4],
+  ["cinco", 5],
+  ["seis", 6],
+  ["siete", 7],
+  ["ocho", 8],
+  ["nueve", 9],
+]);
+const wrapper = new MapWrapper(map);
+
+let actual = wrapper.some((value, key) => key === 'ocho' || value === 8); // Returns true
+
+let actual2 = wrapper.some(value => value > 100); // Returns false
 ```

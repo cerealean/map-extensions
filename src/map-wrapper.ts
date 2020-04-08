@@ -157,6 +157,11 @@ export class MapWrapper<T, K> {
         return collection;
     }
 
+    /**
+     * @description Returns true if the given function evaluates to true. Returns false otherwise. Works similarly to the native 'some' function.
+     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
+     * @param callbackFn 
+     */
     public some(callbackFn: (value: K, key: T, mapWrapper: MapWrapper<T, K>) => boolean): boolean {
         let expMatch = false;
 

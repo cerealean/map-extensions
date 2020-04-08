@@ -1,0 +1,23 @@
+name: Build And Deploy
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Node Setup
+        uses: actions/setup-node@v1.1.0
+        with:
+          version: '12.x'
+
+      - name: npm ci
+        run: npm ci
+          
+          
+      - name: npm run build
+        run: npm run testOnce

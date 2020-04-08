@@ -1,3 +1,5 @@
+![Run Tests](https://github.com/cerealean/map-extensions/workflows/Run%20Tests/badge.svg?branch=master)
+
 # Map Extensions
 
 This is a small, single purpose package to assist in working with JavaScript / TypeScript Maps.

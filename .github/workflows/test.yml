@@ -1,4 +1,4 @@
-name: Build And Deploy
+name: Run Tests
 on:
   push:
     branches:
@@ -15,9 +15,9 @@ jobs:
         with:
           version: '12.x'
 
-      - name: npm ci
+      - name: NPM CI
         run: npm ci
           
           
-      - name: npm run build
+      - name: Run Tests
         run: npm run testOnce

@@ -30,8 +30,8 @@ describe('Map Wrapper', () => {
 
             const actual = wrapper.find(value => value === 'second value');
 
-            expect(actual.value).to.equal('second value');
-            expect(actual.key).to.equal('second');
+            expect(actual!.value).to.equal('second value');
+            expect(actual!.key).to.equal('second');
         });
 
         it('should return one result that matches the given expression while searching in key', () => {
@@ -44,8 +44,8 @@ describe('Map Wrapper', () => {
 
             const actual = wrapper.find((_value, key) => key === 'second');
 
-            expect(actual.value).to.equal('second value');
-            expect(actual.key).to.equal('second');
+            expect(actual!.value).to.equal('second value');
+            expect(actual!.key).to.equal('second');
         });
     });
 

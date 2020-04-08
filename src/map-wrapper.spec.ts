@@ -15,4 +15,15 @@ describe('Map Wrapper', () => {
             });
         });
     });
+
+    describe('find', () => {
+        it('should return null if the provided map is empty', () => {
+            const map = new Map();
+            const wrapper = new MapWrapper(map);
+
+            const actual = wrapper.find(value => !!value);
+
+            expect(actual).to.be.null;
+        });
+    });
 });

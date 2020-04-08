@@ -7,7 +7,7 @@
     "testOnce": "mocha",
     "clean": "rimraf ./build",
     "build": "npm run clean && npx tsc",
-    "pack": "npm run build && npm pack"
+    "prepare": "npm run build"
   },
   "main": "build/index.js",
   "types": "build/index",
@@ -47,7 +47,8 @@
   },
   "dependencies": {},
   "files": [
-    "build/**/*"
+    "build/**/*",
+    "LICENSE"
   ],
   "private": false
 }

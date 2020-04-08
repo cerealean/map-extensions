@@ -4,7 +4,7 @@
   "description": "Extensions to help when working with Map objects",
   "scripts": {
     "test": "mocha --watch",
-    "testOnce": "mocha --watch",
+    "testOnce": "mocha",
     "clean": "rimraf ./build",
     "build": "npm run clean && npx tsc",
     "examples:1": "tsc examples/two-battle-entities/index.ts",

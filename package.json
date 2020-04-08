@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Extensions to help when working with Map",
   "scripts": {
-    "test": "mocha",
+    "test": "mocha --watch",
+    "testOnce": "mocha --watch",
     "clean": "rimraf ./build",
     "build": "npm run clean && npx tsc",
     "examples:1": "tsc examples/two-battle-entities/index.ts",

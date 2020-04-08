@@ -10,7 +10,7 @@ export class MapWrapper<T, K> {
         }
     }
 
-    public get(key: T): K {
+    public get(key: T): K | undefined {
         return this._map.get(key);
     }
 
@@ -56,8 +56,8 @@ export class MapWrapper<T, K> {
         });
     }
 
-    public find(callbackFn: (value: K, key: T, mapWrapper: MapWrapper<T, K>) => boolean): Tuple<T, K> {
-        let tuple: Tuple<T, K> = null;
+    public find(callbackFn: (value: K, key: T, mapWrapper: MapWrapper<T, K>) => boolean): Tuple<T, K> | null {
+        let tuple: Tuple<T, K> | null = null;
         this._map.forEach((value, key) => {
             if (callbackFn(value, key, this) === true) {
                 tuple = new Tuple(key, value);

@@ -1,7 +1,7 @@
 {
   "name": "map-extensions",
   "version": "1.0.0",
-  "description": "Extensions to help when working with Map",
+  "description": "Extensions to help when working with Map objects",
   "scripts": {
     "test": "mocha --watch",
     "testOnce": "mocha --watch",
@@ -21,12 +21,12 @@
     "url": "https://github.com/cerealean"
   },
   "license": "MIT",
-  "homepage": "https://github.com/cerealean/battle-system",
+  "homepage": "https://github.com/cerealean/map-extensions",
   "bugs": {
-    "url": "https://github.com/cerealean/battle-system/issues"
+    "url": "https://github.com/cerealean/map-extensions/issues"
   },
   "repository": {
-    "url": "https://github.com/cerealean/battle-system.git",
+    "url": "https://github.com/cerealean/map-extensions.git",
     "type": "git"
   },
   "funding": {

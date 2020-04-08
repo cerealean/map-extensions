@@ -92,7 +92,7 @@ describe('Map Wrapper', () => {
             const map = new Map<string, number>();
             const wrapper = new MapWrapper(map);
 
-            const actual = wrapper.map(value => value**value);
+            const actual = wrapper.map(value => value ** value);
 
             expect(actual).to.be.empty;
         });
@@ -123,5 +123,43 @@ describe('Map Wrapper', () => {
             expect(actual[7]).to.equal(8 ** 8);
             expect(actual[8]).to.equal(9 ** 9);
         });
+    });
+
+    describe('some', () => {
+        it('should return false when map is empty', () => {
+            const map = new Map<string, number>([]);
+            const wrapper = new MapWrapper(map);
+
+            const actual = wrapper.some(() => true);
+
+            expect(actual).to.be.false;
+        });
+        
+        it('should return true if expression evaluates to true', () => {
+            const map = new Map<string, number>([
+                ['first', 1],
+                ['second', 2],
+                ['third', 3],
+            ]);
+            const wrapper = new MapWrapper(map);
+
+            const actual = wrapper.some((_value, key) => key === 'third');
+
+            expect(actual).to.be.true;
+        });
+
+        it('should return false if expression evaluates to false', () => {
+            const map = new Map<string, number>([
+                ['first', 1],
+                ['second', 2],
+                ['third', 3],
+            ]);
+            const wrapper = new MapWrapper(map);
+
+            const actual = wrapper.some((_value, key) => key === 'fourth');
+
+            expect(actual).to.be.false;
+        });
+
     });
 });

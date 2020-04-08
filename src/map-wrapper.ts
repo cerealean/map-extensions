@@ -157,6 +157,19 @@ export class MapWrapper<T, K> {
         return collection;
     }
 
+    public some(callbackFn: (value: K, key: T, mapWrapper: MapWrapper<T, K>) => boolean): boolean {
+        let expMatch = false;
+
+        this._map.forEach((value, key) => {
+            if(callbackFn(value, key, this) === true) {
+                expMatch = true;
+                return;
+            }
+        });
+
+        return expMatch;
+    }
+
     private isMapType(obj: any): obj is Map<T, K> {
         return obj && obj instanceof Map;
     }

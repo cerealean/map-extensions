@@ -51,13 +51,16 @@ export class MapWrapper<K, V> {
     }
 
     /**
-     * @description Returns a collection of tuples from within the Map. This is the same as native Map functionality.
+     * @description Returns an IterableIterator of native [key, value] pairs from within the Map. This is the same as native Map functionality.
      * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map 
      */
     public entries(): IterableIterator<[K, V]> {
         return this._map.entries();
     }
 
+    /**
+     * @description Returns a collection of Tuple objects from entries within the Map.
+     */
     public tuples(): Tuple<K, V>[] {
         const tupleEntries: Tuple<K, V>[] = [];
 

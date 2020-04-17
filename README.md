@@ -16,10 +16,11 @@ This package provides a MapWrapper object which, exactly as it sounds, wraps cur
 - filter
 - map
 - some
+- tuples
 
 The added methods perform similarly to their Array counterparters but instead work on the wrapped Map object.
 
-#### Examples
+#### MapWrapper Examples
 
 ##### Find
 
@@ -112,4 +113,123 @@ const wrapper = new MapWrapper(map);
 let actual = wrapper.some((value, key) => key === 'ocho' || value === 8); // Returns true
 
 let actual2 = wrapper.some(value => value > 100); // Returns false
+```
+##### Tuples
+
+This is a method similar to the [entries](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/entries) method on a Map. The difference is that tuples will return a collection of Tuple objects instead of the native iterator containing key, value pairs.
+
+```typescript
+const map = new Map<string, number>([
+    ['first', 1],
+    ['second', 2],
+    ['third', 3],
+]);
+const wrapper = new MapWrapper(map);
+
+let actual = wrapper.tuples();
+
+console.log(actual[0].key); // 'first'
+console.log(actual[2].value); // 3
+
+console.log(actual);
+/*
+Will output:
+[
+  Tuple { key: 'first', value: 1 },
+  Tuple { key: 'second', value: 2 },
+  Tuple { key: 'third', value: 3 }
+]
+*/
+```
+
+### Custom Tuple Object Examples
+
+This package includes a custom Tuple object to make it easier working with Map entries.
+
+##### key
+
+```typescript
+const map = new Map<string, number>([
+    ['first', 1],
+    ['second', 2],
+    ['third', 3],
+]);
+const wrapper = new MapWrapper(map);
+
+const actual = wrapper.tuples();
+const myTuple = actual[0];
+
+console.log(myTuple.key) // 'first';
+```
+
+##### value
+
+```typescript
+const map = new Map<string, number>([
+    ['first', 1],
+    ['second', 2],
+    ['third', 3],
+]);
+const wrapper = new MapWrapper(map);
+
+const actual = wrapper.tuples();
+const myTuple = actual[0];
+
+console.log(myTuple.value) // 1;
+```
+
+##### toNativeTuple
+
+```typescript
+const map = new Map<string, number>([
+    ['first', 1],
+    ['second', 2],
+    ['third', 3],
+]);
+const wrapper = new MapWrapper(map);
+
+const actual = wrapper.tuples();
+const myTuple = actual[0];
+
+console.log(myTuple.toNativeTuple()); // ['first', 1]
+```
+##### toMap
+
+```typescript
+const map = new Map<string, number>([
+    ['first', 1],
+    ['second', 2],
+    ['third', 3],
+]);
+const wrapper = new MapWrapper(map);
+
+const actual = wrapper.tuples();
+const myTuple = actual[1];
+
+console.log(myTuple.toMap()); 
+/*
+Returns a new Map object containing only myTuple as an entry:
+
+Map {
+  'second' => 2
+  }
+*/
+```
+##### toMapWrapper
+
+```typescript
+const map = new Map<string, number>([
+    ['first', 1],
+    ['second', 2],
+    ['third', 3],
+]);
+const wrapper = new MapWrapper(map);
+
+const actual = wrapper.tuples();
+const myTuple = actual[2];
+
+console.log(myTuple.toMapWrapper()); 
+/*
+Returns a new MapWrapper object containing only myTuple as an entry.
+*/
 ```

@@ -160,6 +160,35 @@ describe('Map Wrapper', () => {
 
             expect(actual).to.be.false;
         });
+    });
+
+    describe('tuples', () => {
+        it('should return empty array if Map has no entries', () => {
+            const map = new Map<string, number>([]);
+            const wrapper = new MapWrapper(map);
+
+            const actual = wrapper.tuples();
+
+            expect(actual).to.deep.equal([]);
+        });
+        
+        it('should return tuple array in same order as map entries', () => {
+            const map = new Map<string, number>([
+                ['first', 1],
+                ['second', 2],
+                ['third', 3],
+            ]);
+            const wrapper = new MapWrapper(map);
+
+            const actual = wrapper.tuples();
+
+            expect(actual[0].key).to.equal('first');
+            expect(actual[0].value).to.equal(1);
+            expect(actual[1].key).to.equal('second');
+            expect(actual[1].value).to.equal(2);
+            expect(actual[2].key).to.equal('third');
+            expect(actual[2].value).to.equal(3);
+        });
 
     });
 });

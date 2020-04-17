@@ -92,7 +92,7 @@ describe('Map Wrapper', () => {
             const map = new Map<string, number>();
             const wrapper = new MapWrapper(map);
 
-            const actual = wrapper.map(value => value**value);
+            const actual = wrapper.map(value => value ** value);
 
             expect(actual).to.be.empty;
         });
@@ -123,5 +123,72 @@ describe('Map Wrapper', () => {
             expect(actual[7]).to.equal(8 ** 8);
             expect(actual[8]).to.equal(9 ** 9);
         });
+    });
+
+    describe('some', () => {
+        it('should return false when map is empty', () => {
+            const map = new Map<string, number>([]);
+            const wrapper = new MapWrapper(map);
+
+            const actual = wrapper.some(() => true);
+
+            expect(actual).to.be.false;
+        });
+        
+        it('should return true if expression evaluates to true', () => {
+            const map = new Map<string, number>([
+                ['first', 1],
+                ['second', 2],
+                ['third', 3],
+            ]);
+            const wrapper = new MapWrapper(map);
+
+            const actual = wrapper.some((_value, key) => key === 'third');
+
+            expect(actual).to.be.true;
+        });
+
+        it('should return false if expression evaluates to false', () => {
+            const map = new Map<string, number>([
+                ['first', 1],
+                ['second', 2],
+                ['third', 3],
+            ]);
+            const wrapper = new MapWrapper(map);
+
+            const actual = wrapper.some((_value, key) => key === 'fourth');
+
+            expect(actual).to.be.false;
+        });
+    });
+
+    describe('tuples', () => {
+        it('should return empty array if Map has no entries', () => {
+            const map = new Map<string, number>([]);
+            const wrapper = new MapWrapper(map);
+
+            const actual = wrapper.tuples();
+
+            expect(actual).to.deep.equal([]);
+        });
+        
+        it('should return tuple array in same order as map entries', () => {
+            const map = new Map<string, number>([
+                ['first', 1],
+                ['second', 2],
+                ['third', 3],
+            ]);
+            const wrapper = new MapWrapper(map);
+
+            const actual = wrapper.tuples();
+
+            expect(actual[0].key).to.equal('first');
+            expect(actual[0].value).to.equal(1);
+            expect(actual[1].key).to.equal('second');
+            expect(actual[1].value).to.equal(2);
+            expect(actual[2].key).to.equal('third');
+            expect(actual[2].value).to.equal(3);
+        });
+
     });
 });

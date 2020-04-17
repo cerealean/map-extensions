@@ -1,25 +1,25 @@
 import { MapWrapper } from './map-wrapper';
-export class Tuple<T, K> {
-    constructor(public readonly key: T, public readonly value: K){}
+export class Tuple<K, V> {
+    constructor(public readonly key: K, public readonly value: V){}
 
     /**
      * @description Returns this tuple in the native format
      */
-    public toNativeTuple(): [T, K] {
+    public toNativeTuple(): [K, V] {
         return [this.key, this.value];
     }
 
     /**
-     * Returns a new Map instance with this tuple included within it
+     * @description Returns a new Map instance with this tuple included within it
      */
-    public toMap(): Map<T, K> {
+    public toMap(): Map<K, V> {
         return new Map([this.toNativeTuple()]);
     }
 
     /**
-     * Returns a new MapWrapper instance with this tuple located within it
+     * @description Returns a new MapWrapper instance with this tuple located within it
      */
-    public toMapWrapper(): MapWrapper<T, K> {
-        return new MapWrapper<T, K>(this.toMap());
+    public toMapWrapper(): MapWrapper<K, V> {
+        return new MapWrapper<K, V>(this.toMap());
     }
 }

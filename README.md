@@ -15,12 +15,14 @@ This package provides a MapWrapper object which, exactly as it sounds, wraps cur
 - find
 - filter
 - map
+- some
+- tuples
 
-The added methods perform exactly as their Array counterparters but instead work on the wrapped Map object.
+The added methods perform similarly to their Array counterparters but instead work on the wrapped Map object.
 
-#### Examples
+#### MapWrapper Examples
 
-###### Find
+##### Find
 
 ```typescript
 const map = new Map([
@@ -42,7 +44,7 @@ const newMap = actual.toMap(); // Would be a new Map instance with the tuple inc
 const newWrappedMap = actual.toMapWrapper(); // Would be a new MapWrapper instance with the tuple included within it
 ```
 
-###### Filter
+##### Filter
 
 ```typescript
 const map = new Map<string, number>([
@@ -58,7 +60,7 @@ const map = new Map<string, number>([
 ]);
 const wrapper = new MapWrapper(map);
 
-const actual = wrapper.filter((value) => value > 6);
+const actual = wrapper.filter((value, _key) => value > 6);
 
 // actual will be a Map only containing the tuples 7, 8, and 9
 console.log(actual);
@@ -71,7 +73,7 @@ Map {
 */
 ```
 
-###### Map
+##### Map
 
 ```typescript
 const map = new Map<string, number>([
@@ -91,4 +93,143 @@ const actual = wrapper.map((value) => Math.pow(value, value));
 
 // actual will be an array of the original numbers to their own power
 // output would be [ 1, 4, 27, 256, 3125, 46656, 823543, 16777216, 387420489 ]
+```
+##### Some
+
+```typescript
+const map = new Map<string, number>([
+  ["uno", 1],
+  ["dos", 2],
+  ["tres", 3],
+  ["quatro", 4],
+  ["cinco", 5],
+  ["seis", 6],
+  ["siete", 7],
+  ["ocho", 8],
+  ["nueve", 9],
+]);
+const wrapper = new MapWrapper(map);
+
+let actual = wrapper.some((value, key) => key === 'ocho' || value === 8); // Returns true
+
+let actual2 = wrapper.some(value => value > 100); // Returns false
+```
+##### Tuples
+
+This is a method similar to the [entries](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/entries) method on a Map. The difference is that tuples will return a collection of Tuple objects instead of the native iterator containing key, value pairs.
+
+```typescript
+const map = new Map<string, number>([
+    ['first', 1],
+    ['second', 2],
+    ['third', 3],
+]);
+const wrapper = new MapWrapper(map);
+
+let actual = wrapper.tuples();
+
+console.log(actual[0].key); // 'first'
+console.log(actual[2].value); // 3
+
+console.log(actual);
+/*
+Will output:
+[
+  Tuple { key: 'first', value: 1 },
+  Tuple { key: 'second', value: 2 },
+  Tuple { key: 'third', value: 3 }
+]
+*/
+```
+
+### Custom Tuple Object Examples
+
+This package includes a custom Tuple object to make it easier working with Map entries.
+
+##### key
+
+```typescript
+const map = new Map<string, number>([
+    ['first', 1],
+    ['second', 2],
+    ['third', 3],
+]);
+const wrapper = new MapWrapper(map);
+
+const actual = wrapper.tuples();
+const myTuple = actual[0];
+
+console.log(myTuple.key) // 'first';
+```
+
+##### value
+
+```typescript
+const map = new Map<string, number>([
+    ['first', 1],
+    ['second', 2],
+    ['third', 3],
+]);
+const wrapper = new MapWrapper(map);
+
+const actual = wrapper.tuples();
+const myTuple = actual[0];
+
+console.log(myTuple.value) // 1;
+```
+
+##### toNativeTuple
+
+```typescript
+const map = new Map<string, number>([
+    ['first', 1],
+    ['second', 2],
+    ['third', 3],
+]);
+const wrapper = new MapWrapper(map);
+
+const actual = wrapper.tuples();
+const myTuple = actual[0];
+
+console.log(myTuple.toNativeTuple()); // ['first', 1]
+```
+##### toMap
+
+```typescript
+const map = new Map<string, number>([
+    ['first', 1],
+    ['second', 2],
+    ['third', 3],
+]);
+const wrapper = new MapWrapper(map);
+
+const actual = wrapper.tuples();
+const myTuple = actual[1];
+
+console.log(myTuple.toMap()); 
+/*
+Returns a new Map object containing only myTuple as an entry:
+
+Map {
+  'second' => 2
+  }
+*/
+```
+##### toMapWrapper
+
+```typescript
+const map = new Map<string, number>([
+    ['first', 1],
+    ['second', 2],
+    ['third', 3],
+]);
+const wrapper = new MapWrapper(map);
+
+const actual = wrapper.tuples();
+const myTuple = actual[2];
+
+console.log(myTuple.toMapWrapper()); 
+/*
+Returns a new MapWrapper object containing only myTuple as an entry.
+*/
 ```

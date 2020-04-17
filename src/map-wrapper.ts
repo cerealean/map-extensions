@@ -1,7 +1,7 @@
 import { Tuple } from './tuple';
 
 export class MapWrapper<T, K> {
-    private readonly _map: Map<T, K>
+    private readonly _map: Map<T, K>;
 
     /**
      * 
@@ -99,7 +99,7 @@ export class MapWrapper<T, K> {
     }
 
     /**
-     * @description Loops over tuples within the map, invoking the given function on each tuple. Works similarly to the native forEach function.
+     * @description Loops over tuples within the map, invoking the given function on each tuple. Works similarly to the native forEach function on arrays.
      * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach 
      * @param callbackFn 
      */
@@ -110,7 +110,7 @@ export class MapWrapper<T, K> {
     }
 
     /**
-     * @description Will return the first Tuple that evaluates as true by the given function. Works similarly to the native find function.
+     * @description Will return the first Tuple that evaluates as true by the given function. Works similarly to the native find function on arrays.
      * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
      * @param callbackFn 
      */
@@ -127,7 +127,7 @@ export class MapWrapper<T, K> {
     }
 
     /**
-     * @description Returns a new MapWrapper instance with data filtered by the given function. Works similarly to the native filter function.
+     * @description Returns a new MapWrapper instance with data filtered by the given function. Works similarly to the native filter function on arrays.
      * @see https://developer.mozilla.org/en-US/docs/web/javascript/reference/global_objects/array/filter 
      * @param callbackFn 
      */
@@ -143,7 +143,7 @@ export class MapWrapper<T, K> {
     }
 
     /**
-     * @description Creates a new array of the type returned by the given function. Works similarly to the native map function.
+     * @description Creates a new array of the type returned by the given function. Works similarly to the native map function on arrays.
      * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map 
      * @param callbackFn 
      */
@@ -158,7 +158,7 @@ export class MapWrapper<T, K> {
     }
 
     /**
-     * @description Returns true if the given function evaluates to true. Returns false otherwise. Works similarly to the native 'some' function.
+     * @description Returns true if the given function evaluates to true. Returns false otherwise. Works similarly to the native 'some' function on arrays.
      * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
      * @param callbackFn 
      */

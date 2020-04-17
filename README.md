@@ -59,7 +59,7 @@ const map = new Map<string, number>([
 ]);
 const wrapper = new MapWrapper(map);
 
-const actual = wrapper.filter((value) => value > 6);
+const actual = wrapper.filter((value, _key) => value > 6);
 
 // actual will be a Map only containing the tuples 7, 8, and 9
 console.log(actual);

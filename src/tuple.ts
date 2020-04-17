@@ -10,14 +10,14 @@ export class Tuple<T, K> {
     }
 
     /**
-     * Returns a new Map instance with this tuple included within it
+     * @description Returns a new Map instance with this tuple included within it
      */
     public toMap(): Map<T, K> {
         return new Map([this.toNativeTuple()]);
     }
 
     /**
-     * Returns a new MapWrapper instance with this tuple located within it
+     * @description Returns a new MapWrapper instance with this tuple located within it
      */
     public toMapWrapper(): MapWrapper<T, K> {
         return new MapWrapper<T, K>(this.toMap());
